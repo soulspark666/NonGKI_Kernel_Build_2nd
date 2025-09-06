@@ -82,7 +82,7 @@ env:
   GENERATE_DTB: "false"
   GENERATE_CHIP: "mediatek"
 
-  BUILD_DEBUGGER: "false"  # Enable for debugging
+  BUILD_DEBUGGER: "true"  # Enable for debugging
   SKIP_PATCH: "false"
 
   BUILD_OTHER_CONFIG: "false"  # Can enable if additional configs needed
