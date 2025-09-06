@@ -41,8 +41,8 @@ env:
   SUSFS_FIXED : false
   SUSFS_UPDATE : false
 
-  AK3_SOURCE : "https://github.com/osm0sis/AnyKernel3.git"
-  AK3_BRANCH : "master"
+  AK3_SOURCE : "https://github.com/nishant6342/AnyKernel3"
+  AK3_BRANCH : "cupida"
 
   BOOT_SOURCE : ""
 
