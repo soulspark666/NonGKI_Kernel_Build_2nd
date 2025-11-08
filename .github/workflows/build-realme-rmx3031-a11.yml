@@ -108,32 +108,28 @@ jobs:
       - name: ⏰ Checkout repository
         uses: actions/checkout@v4
 
-      - name: ⌛️ Execute common process
+      - name: ⌛️ Compilation environment preparation
         uses: ./.github/workflows/build-env
 
-      - name: ⚙️ Compilation preparation
+      - name: ⚙️ Get neccssary tools
         uses: ./.github/workflows/build-ready
 
-      - name: ✅ Verify Pre-Applied Patches
+      - name: 🪝 Patch Kernel of SUSFS
+        uses: ./.github/workflows/patch-susfs
+
+      - name: 🔗 Patch for no-kprobe
+        uses: ./.github/workflows/patch-no-kprobe
+
+      - name: 🪛 Extra Kernel Options
         run: |
-          cd $GITHUB_WORKSPACE/device_kernel
-          
-          echo "=== Verifying Pre-Applied Patches ==="
-          echo "✅ KernelSU Integration:"
-          [ -d "drivers/kernelsu" ] && echo "  - drivers/kernelsu: OK" || echo "  - drivers/kernelsu: MISSING"
-          
-          echo "✅ SuSFS Integration:" 
-          [ -f "fs/susfs.c" ] && echo "  - fs/susfs.c: OK" || echo "  - fs/susfs.c: MISSING"
-          [ -f "include/linux/susfs.h" ] && echo "  - include/linux/susfs.h: OK" || echo "  - include/linux/susfs.h: MISSING"
-          
-          echo "✅ Hook Patches:"
-          grep -q "CONFIG_KSU" fs/exec.c && echo "  - fs/exec.c hooks: OK" || echo "  - fs/exec.c hooks: MISSING"
-          
-          echo "✅ Kernel Configuration:"
-          grep -q "CONFIG_KSU=y" arch/arm64/configs/${{ env.DEFCONFIG_NAME }} && echo "  - KSU config: OK" || echo "  - KSU config: MISSING"
-          grep -q "CONFIG_KSU_SUSFS=y" arch/arm64/configs/${{ env.DEFCONFIG_NAME }} && echo "  - SuSFS config: OK" || echo "  - SuSFS config: MISSING"
-          
-          echo "=== All patches verified ==="
+         …h Kernel of Re:Kernel
+        uses: ./.github/workflows/patch-rekernel
+
+      - name: 🔒 Patch Kernel of Baseband Guard
+        uses: ./.github/workflows/patch-baseband-guard
+
+      - name: 🔧 Patch Hide Stuff
+        uses: ./.github/workflows/patch-hide-stuff
 
       - name: 🚀 Build Process
         uses: ./.github/workflows/build-process
