@@ -78,6 +78,11 @@ env:
   KPM_ENABLE: "false"
   KPM_FIX: "false"  # Important for stability
   KPM_PATCH_SOURCE: "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU_patch/refs/heads/main/kpm/patch_linux"
+  
+  BASEBAND_GUARD_ENABLE: "false" #if u want prevent unauthorized writes to critical partitions/device nodes.
+  BASEBAND_GUARD_BOOT: "false" #if u want to protect boot partition.
+
+  HIDE_STUFF: "false" # hide some of the features
 
   GENERATE_DTB: "false"
   GENERATE_CHIP: "mediatek"
@@ -132,6 +137,9 @@ jobs:
 
       - name: 🚀 Build Process
         uses: ./.github/workflows/build-process
+
+      - name: 🔩 Pack Process
+        uses: ./.github/workflows/pack-process
 
       - name: ✏️ Upload Artifacts
         uses: ./.github/workflows/upload-files
