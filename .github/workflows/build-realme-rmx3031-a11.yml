@@ -36,7 +36,7 @@ env:
   KERNELSU_AUTO_FORK : "sukisu" # magic, rsuntk, next, wild, jingmatrix and sukisu
   
   # SukiSU-Ultra configuration
-  KERNELSU_SOURCE: "SukiSU"
+  KERNELSU_SOURCE: "https://github.com/SukiSU-Ultra/SukiSU-Ultra.git"
   KERNELSU_BRANCH: "susfs-main"
   KERNELSU_NAME: "SukiSU-Ultra"
 
