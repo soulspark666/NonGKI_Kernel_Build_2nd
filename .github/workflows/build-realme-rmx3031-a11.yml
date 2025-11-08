@@ -32,6 +32,9 @@ env:
   DEFCONFIG_ORIGIN_IMAGE: ""
   DEFCONFIG_FROM_BOOT: false
 
+  KERNELSU_AUTO_GET : "false" # if u want easy setting kernelsu, u can true.
+  KERNELSU_AUTO_FORK : "sukisu" # magic, rsuntk, next, wild, jingmatrix and sukisu
+  
   # SukiSU-Ultra configuration
   KERNELSU_SOURCE: "https://github.com/SukiSU-Ultra/SukiSU-Ultra.git"
   KERNELSU_BRANCH: "susfs-main"
